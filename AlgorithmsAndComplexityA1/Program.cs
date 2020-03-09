@@ -13,6 +13,11 @@ namespace AlgorithmsAndComplexityA1
     {
         static void Main(string[] args)
         {
+            //Initialise method classes
+            Sorts sortAlgorithms = new Sorts();
+            Searches searchAlgorithms = new Searches();
+            Merging mergeAlgorithms = new Merging();
+
             int[] networkDataFromFile = {}; 
             List<String> NetworkDataPaths = new List<String>();
 
@@ -38,7 +43,8 @@ namespace AlgorithmsAndComplexityA1
             Console.WriteLine(fileSelection);
             Console.WriteLine(NetworkDataPaths[Convert.ToInt32(fileSelection)-1]);
 
-
+            //Ask user what they'd like to do with that data
+            
         }
     }
 }
