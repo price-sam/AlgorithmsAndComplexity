@@ -44,7 +44,33 @@ namespace AlgorithmsAndComplexityA1
             Console.WriteLine(NetworkDataPaths[Convert.ToInt32(fileSelection)-1]);
 
             //Ask user what they'd like to do with that data
+            Console.WriteLine("What would you like to do with the data in the selected file?\n[1] Sort\n[2] Search\n[3] Merge\n[0] Main Menu");
+            Console.Write("Enter Selection: ");
+            string modeSelection = Console.ReadLine();
+            if (modeSelection == "1")
+            {
+                //sort
             
+            } 
+            else if (modeSelection == "2")
+            {
+                //search
+            }
+            else if (modeSelection == "3")
+            {
+                //merge
+            }
+            else if (modeSelection == "0")
+            {
+                //mm
+            }
+
+            int[] ar = { 9, 392, 2, 1, 92 };
+            sortAlgorithms.QuickSort(ar, 0, ar.Length-1);
+            foreach (var item in ar)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
