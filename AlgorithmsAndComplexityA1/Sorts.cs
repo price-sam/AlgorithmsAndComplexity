@@ -28,18 +28,22 @@ namespace AlgorithmsAndComplexityA1
             return stepCount;
         }
 
-        public void InsertionSort(int[] data)
+        public int InsertionSort(int[] data)
         {
+            int stepCount = 0;
             int sortedTotal = 0;
             int index;
             while (sortedTotal < data.Length)
             {
+                stepCount++;
                 int temp = data[sortedTotal];
                 for (index = sortedTotal; index > 0; index--)
                 {
+                    stepCount++;
                     if (temp < data[index - 1])
                     {
                         data[index] = data[index - 1];
+                        stepCount++;
                     }
                     else
                     {
@@ -49,7 +53,8 @@ namespace AlgorithmsAndComplexityA1
 
                 data[index] = temp;
                 sortedTotal++;
-            }
+             }
+            return stepCount;
         }
 
         private void merger(int[] data, int[] temp, int low, int middle, int high)
@@ -74,26 +79,32 @@ namespace AlgorithmsAndComplexityA1
             }
         }
 
-        private void MergeSortRecursive(int[] data, int[] temp, int low, int high)
+        private int MergeSortRecursive(int[] data, int[] temp, int low, int high, int stepCount)
         {
             int n = high - low + 1;
             int middle = low + n / 2;
             int i;
 
-            if (n < 2) return;
+            if (n < 2) return stepCount;
             for (i = low; i < middle; i++)
             {
                 temp[i] = data[i];
+                stepCount++;
             }
-            MergeSortRecursive(temp, data, low, middle - 1);
-            MergeSortRecursive(data, temp, middle, high);
+            stepCount++;
+            stepCount++;
+            stepCount++;
+            MergeSortRecursive(temp, data, low, middle - 1, stepCount);
+            MergeSortRecursive(data, temp, middle, high, stepCount);
             merger(data, temp, low, middle, high);
+
+            return stepCount;
         }
 
-        public void MergeSort(int[] data)
+        public int MergeSort(int[] data)
         {
             int[] temp = new int[data.Length];
-            MergeSortRecursive(data, temp, 0, data.Length - 1);
+            return MergeSortRecursive(data, temp, 0, data.Length - 1, 0);
         }
 
 

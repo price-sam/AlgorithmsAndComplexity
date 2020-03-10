@@ -113,10 +113,9 @@ namespace AlgorithmsAndComplexityA1
 
                 bool isDataInArraySorted = false;
 
-                bool modeSelectionValid = false;
                 bool active = true;
               
-                while (!modeSelectionValid || active)
+                while (active)
                 {
                     //Ask user what they'd like to do with that data
                     Console.WriteLine("What would you like to do with the data in the selected file?\n[1] Sort\n[2] Search\n[3] Merge\n[0] Main Menu");
@@ -128,42 +127,46 @@ namespace AlgorithmsAndComplexityA1
                             Console.WriteLine("Which algorithm would you like to run?\n[1] Bubble Sort\n[2] Inserstion Sort\n[3] Merge Sort\n[4] Quick Sort\n[0] Back");
                             Console.Write("Enter Selection: ");
                             string sortSelection = Console.ReadLine();
+                            int stepCount;
                             switch (sortSelection)
                             {
                                 case "1":
                                     //bubble sort
                                     Console.WriteLine("Performing bubble sort on selected data...");
-                                    sortAlgorithms.bubbleSort(fileData, fileData.Length);
-                                    helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes 
+                                    stepCount = sortAlgorithms.bubbleSort(fileData, fileData.Length);
+                                    helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes
+                                    Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
-                                    return;
+                                    break;
 
                                 case "2":
                                     //insertion sort
                                     Console.WriteLine("Performing Insertion Sort on selected data...");
-                                    sortAlgorithms.InsertionSort(fileData);
+                                    stepCount = sortAlgorithms.InsertionSort(fileData);
                                     helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes 
+                                    Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
-                                    return;
+                                    break;
 
                                 case "3":
                                     //merge
                                     Console.WriteLine("Performing Merge Sort on selected data...");
-                                    sortAlgorithms.MergeSort(fileData);
+                                    stepCount = sortAlgorithms.MergeSort(fileData);
                                     helperFuncs.OutputArray(fileData);
+                                    Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
-                                    return;
+                                    break;
 
                                 case "4":
                                     //quick
                                     //Console.WriteLine("Performing Quick Sort on selected data...");
                                     //sortAlgorithms.QuickSort(fileData); 
                                     //isDataInArraySorted = true;
-                                    return;
+                                    break;
 
                                 case "0":
                                     //back
-                                    return;
+                                    break;
 
                                 default:
                                     Console.WriteLine("\nInvalid Selection. Please specify a digit linked to the mode. E.g. 1\n");
@@ -203,10 +206,28 @@ namespace AlgorithmsAndComplexityA1
                                     //Binary -- only allow if data sorted
                                     if (!isDataInArraySorted)
                                     {
-                                        Console.Beep();
                                         Console.WriteLine("\nFunction unavailable while data unsorted. To enable this function, run a sorting algorithm on it first.\n");
                                         break;
                                     }
+                                    Console.Write("Enter the integer you'd like to search for: ");
+                                    string binaryTarget_str = Console.ReadLine();
+                                    int binaryTarget = helperFuncs.ParseInt(binaryTarget_str);
+                                    if (binaryTarget == -999999)
+                                    {
+                                        Console.WriteLine("\nInvalid Selection. You must enter an integer value.");
+                                        break;
+                                    }
+
+                                    Console.WriteLine("Performing Binary Search to find " + binaryTarget_str + "in selected data..");
+                                    int binaryResult = searchAlgorithms.BinarySearch(fileData, binaryTarget);
+                                    if (binaryResult == -1)
+                                    {
+                                        Console.WriteLine("Target not found in data.");
+                                        break;
+                                    }
+
+                                    Console.WriteLine(binaryTarget_str + " found at position " + binaryResult.ToString() + " in selected data.");
+
                                     break;
                             }
 
@@ -217,7 +238,6 @@ namespace AlgorithmsAndComplexityA1
                             break;
 
                         case "0":
-                            modeSelectionValid = true;
                             active = false;
                             break;
 
@@ -227,22 +247,8 @@ namespace AlgorithmsAndComplexityA1
 
 
                     }
-                   
                 }
-               
-
             }
-           
-           
-            //Console.WriteLine(fileSelection);
-            //Console.WriteLine(NetworkDataPaths[Convert.ToInt32(fileSelection)-1]);
-
-            
-
-            int[] ar = { 9, 392, 2, 1, 92 };
-            sortAlgorithms.bubbleSort(ar, ar.Length);
-            Console.WriteLine(searchAlgorithms.BinarySearch(ar, 92222));
-           
         }
     }
 }
