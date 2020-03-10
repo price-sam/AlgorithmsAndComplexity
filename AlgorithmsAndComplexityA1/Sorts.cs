@@ -107,8 +107,9 @@ namespace AlgorithmsAndComplexityA1
 
 
 
-        public void QuickSort(int[] data, int left, int right) 
+        private int theQuickSort(int[] data, int left, int right, int stepCount) 
         {
+            stepCount++;
             int i, j;
             int pivot, temp;
             i = left;
@@ -117,11 +118,22 @@ namespace AlgorithmsAndComplexityA1
 
             do
             {
-                while ((data[i] < pivot) && (i < right)) i++;
-                while ((pivot < data[j]) && (i > left)) j--;
+                while ((data[i] < pivot) && (i < right)) 
+                {
+                    i++;
+                    stepCount++;
+                 } ;
+                while ((pivot < data[j]) && (i > left))
+                {
+                    j--;
+                    stepCount++;
+                }
+
+               
 
                 if (i <= j)
                 {
+                    stepCount++;
                     temp = data[i];
                     data[i] = data[j];
                     data[j] = temp;
@@ -130,8 +142,15 @@ namespace AlgorithmsAndComplexityA1
                 }
             } while (i <= j);
 
-            if (left < j) QuickSort(data, left, j);
-            if (i < right) QuickSort(data, i, right);
+            if (left < j) theQuickSort(data, left, j, stepCount);
+            if (i < right) theQuickSort(data, i, right, stepCount);
+
+            return stepCount;
+        }
+
+        public int QuickSort(int[] data)
+        {
+            return theQuickSort(data, 0, data.Length - 1, 0);
         }
     
 

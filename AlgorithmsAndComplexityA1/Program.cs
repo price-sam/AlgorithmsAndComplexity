@@ -106,7 +106,7 @@ namespace AlgorithmsAndComplexityA1
                     switch (modeSelection)
                     {
                         case "1":
-                            Console.WriteLine("Which algorithm would you like to run?\n[1] Bubble Sort\n[2] Inserstion Sort\n[3] Merge Sort\n[4] Quick Sort\n[0] Back");
+                            Console.WriteLine("Which algorithm would you like to run?\n[1] Bubble Sort\n[2] Insertsion Sort\n[3] Merge Sort\n[4] Quick Sort\n[0] Back");
                             Console.Write("Enter Selection: ");
                             string sortSelection = Console.ReadLine();
                             int stepCount = 0;
@@ -142,8 +142,9 @@ namespace AlgorithmsAndComplexityA1
                                 case "4":
                                     //quick
                                     Console.WriteLine("\nPerforming Quick Sort on selected data...");
-                                    sortAlgorithms.QuickSort(fileData, 0, fileData.Length-1);
-                                    helperFuncs.OutputArray(fileData); 
+                                    stepCount = sortAlgorithms.QuickSort(fileData);
+                                    helperFuncs.OutputArray(fileData);
+                                    Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
                                     break;
 

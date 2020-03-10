@@ -30,7 +30,7 @@ namespace AlgorithmsAndComplexityA1
             string arrayPrintable = "{";
             char seperator = ',';
             int iterator = 10;
-            if (array.Length > 256) iterator = 50;
+            if (array.Length > 500) iterator = 50;
 
             for (int i = 0; i < array.Length; i+=iterator)
             {
@@ -38,7 +38,7 @@ namespace AlgorithmsAndComplexityA1
             }
 
             arrayPrintable = arrayPrintable + "}";
-            Console.WriteLine("Displaying result array - iterator (" + iterator + ") with length of " + array.Length);
+            Console.WriteLine("Displaying result array - showing every " + iterator + "th item in the array with length of " + array.Length);
             Console.WriteLine(arrayPrintable);
 
         }
