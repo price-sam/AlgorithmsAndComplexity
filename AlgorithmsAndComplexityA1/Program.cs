@@ -17,9 +17,12 @@ namespace AlgorithmsAndComplexityA1
             Sorts sortAlgorithms = new Sorts();
             Searches searchAlgorithms = new Searches();
             Merging mergeAlgorithms = new Merging();
+            HelperFunctions helperFuncs = new HelperFunctions();
 
             int[] networkDataFromFile = {}; 
             List<String> NetworkDataPaths = new List<String>();
+
+            //Initialisation
 
             //Get the current path - ensuring the program still runs on a different system
             string currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -29,17 +32,38 @@ namespace AlgorithmsAndComplexityA1
                 //Store path for reference in 
                 NetworkDataPaths.Add(file);
             }
-            //Handle selection
-            Console.WriteLine("Available Network Data files: ");
-            int count = 0;
-            foreach (string path in NetworkDataPaths)
+
+            //Main Loop
+            bool mainActive = true; 
+
+            while (mainActive)
             {
-                count++;
-                string[] pathSplit = path.Split('/');
-                Console.WriteLine("[" + count.ToString() + "] " + pathSplit[pathSplit.Length-1]);
+                //Handle selection
+                Console.WriteLine("Available Network Data files: ");
+                int count = 0;
+                foreach (string path in NetworkDataPaths)
+                {
+                    count++;
+                    string[] pathSplit = path.Split('/');
+                    Console.WriteLine("[" + count.ToString() + "] " + pathSplit[pathSplit.Length - 1]);
+                }
+
+                //Do WHILE - For player input
+                bool validFile = false;
+                string selectedFilePath;
+
+                do
+                {
+
+                    Console.Write("Select file: ");
+                    string fileSelection = Console.ReadLine(); 
+                    
+                    
+
+                } while (!validFile);
             }
-            Console.Write("Select file: ");
-            string fileSelection = Console.ReadLine(); // ADD ERROR HANDLING HERE
+           
+            
             Console.WriteLine(fileSelection);
             Console.WriteLine(NetworkDataPaths[Convert.ToInt32(fileSelection)-1]);
 
@@ -66,11 +90,9 @@ namespace AlgorithmsAndComplexityA1
             }
 
             int[] ar = { 9, 392, 2, 1, 92 };
-            sortAlgorithms.QuickSort(ar, 0, ar.Length-1);
-            foreach (var item in ar)
-            {
-                Console.WriteLine(item);
-            }
+            sortAlgorithms.bubbleSort(ar, ar.Length);
+            Console.WriteLine(searchAlgorithms.BinarySearch(ar, 92222));
+           
         }
     }
 }
