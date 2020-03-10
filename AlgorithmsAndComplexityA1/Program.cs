@@ -127,14 +127,15 @@ namespace AlgorithmsAndComplexityA1
                         case "1":
                             Console.WriteLine("Which algorithm would you like to run?\n[1] Bubble Sort\n[2] Inserstion Sort\n[3] Merge Sort\n[4] Quick Sort\n[0] Back");
                             Console.Write("Enter Selection: ");
-                            string algoSelection = Console.ReadLine();
-                            switch (algoSelection)
+                            string sortSelection = Console.ReadLine();
+                            switch (sortSelection)
                             {
                                 case "1":
                                     //bubble sort
                                     Console.WriteLine("Performing bubble sort on selected data...");
                                     sortAlgorithms.bubbleSort(fileData, fileData.Length);
                                     helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes 
+                                    isDataInArraySorted = true;
                                     return;
 
                                 case "2":
@@ -142,6 +143,7 @@ namespace AlgorithmsAndComplexityA1
                                     Console.WriteLine("Performing Insertion Sort on selected data...");
                                     sortAlgorithms.InsertionSort(fileData);
                                     helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes 
+                                    isDataInArraySorted = true;
                                     return;
 
                                 case "3":
@@ -149,12 +151,14 @@ namespace AlgorithmsAndComplexityA1
                                     Console.WriteLine("Performing Merge Sort on selected data...");
                                     sortAlgorithms.MergeSort(fileData);
                                     helperFuncs.OutputArray(fileData);
+                                    isDataInArraySorted = true;
                                     return;
 
                                 case "4":
                                     //quick
                                     //Console.WriteLine("Performing Quick Sort on selected data...");
                                     //sortAlgorithms.QuickSort(fileData); 
+                                    //isDataInArraySorted = true;
                                     return;
 
                                 case "0":
@@ -169,6 +173,43 @@ namespace AlgorithmsAndComplexityA1
 
                         case "2":
                             Console.WriteLine("Which algorithm would you like to run?\n[1] Linear Search\n[2] Binary Search\n[0] Back");
+                            Console.Write("Enter Selection: ");
+                            string searchSelection = Console.ReadLine();
+                            switch (searchSelection)
+                            {
+                                case "1":
+                                    //linear
+                                    Console.Write("Enter the integer you'd like to search for: ");
+                                    string linearTarget_str = Console.ReadLine();
+                                    int linearTarget = helperFuncs.ParseInt(linearTarget_str);
+                                    if (linearTarget == -999999)
+                                    {
+                                        Console.WriteLine("\nInvalid Selection. You must enter an integer value.");
+                                        break;
+                                    }
+
+                                    Console.WriteLine("Performing Linear Search to find " + linearTarget_str + "in selected data..");
+                                    int linearResult = searchAlgorithms.LinearSearch(fileData, linearTarget);
+                                    if (linearResult == -1)
+                                    {
+                                        Console.WriteLine("Target not found in data.");
+                                        break;
+                                    }
+
+                                    Console.WriteLine(linearTarget_str + " found at position " + linearResult.ToString() + " in selected data.");
+                                    break;
+
+                                case "2":
+                                    //Binary -- only allow if data sorted
+                                    if (!isDataInArraySorted)
+                                    {
+                                        Console.Beep();
+                                        Console.WriteLine("\nFunction unavailable while data unsorted. To enable this function, run a sorting algorithm on it first.\n");
+                                        break;
+                                    }
+                                    break;
+                            }
+
                             break;
 
                         case "3":

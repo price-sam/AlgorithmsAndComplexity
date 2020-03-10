@@ -42,5 +42,19 @@ namespace AlgorithmsAndComplexityA1
             Console.WriteLine(arrayPrintable);
 
         }
+
+        public int ParseInt(string x)
+        {
+            int output = 0;
+            try
+            {
+                output = Convert.ToInt32(x);
+            }
+            catch
+            {
+                return -999999;
+            }
+            return output;
+        }
     }
 }
