@@ -7,6 +7,22 @@ namespace AlgorithmsAndComplexityA1
     class Searches
     {
 
+
+
+
+
+        //REMINDER - ADD FUNCTIONALITY IF TARGET APPEARS MORE THAN ONCE TO PROVIDE ALL LOCATIONS (TASK 3) 
+
+
+
+
+
+
+
+
+
+
+
         public int LinearSearch(int[] array, int target)
         //Performs a linear search on the given array of integers
         // Takes a target integer - Returns position if found - Returns -1 if not found
