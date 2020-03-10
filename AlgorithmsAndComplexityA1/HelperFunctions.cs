@@ -21,5 +21,10 @@ namespace AlgorithmsAndComplexityA1
                 array[calc] = currentPos;
             }
         }
+
+        public void stringToArray(string data)
+        {
+
+        }
     }
 }

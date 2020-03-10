@@ -51,9 +51,9 @@ namespace AlgorithmsAndComplexityA1
 
                 //Do WHILE - For player input
                 bool validFile = false;
-                string selectedFilePath;
+                string selectedFilePath = "";
 
-                do
+                while (!validFile)
                 {
 
                     Console.Write("Select file: ");
@@ -78,12 +78,29 @@ namespace AlgorithmsAndComplexityA1
                     }
 
                     validFile = true;
+                    selectedFilePath = NetworkDataPaths[fileSelection_i-1];
+                    
+                }
+                Console.WriteLine("\nFile Selected - " + selectedFilePath.Split('/').Last());  //Display what file was selected.
 
+                string[] fileData_string = File.ReadAllLines(selectedFilePath);
+                int totalLines = fileData_string.Length;
+                int[] fileData = new int[totalLines];
 
-                } while (validFile == false);
+                int dataCount = 0;
+                // Add each value as an integer to an array of integers ( as readalllines returns String[])
+                foreach (string item in fileData_string)
+                {
+                    if (item == "") continue;
+                    fileData[dataCount] = Convert.ToInt32(item);
+                    dataCount++;
+                }
+
+              
+
             }
            
-            
+           
             //Console.WriteLine(fileSelection);
             //Console.WriteLine(NetworkDataPaths[Convert.ToInt32(fileSelection)-1]);
 
