@@ -22,8 +22,24 @@ namespace AlgorithmsAndComplexityA1
             }
         }
 
-        public void stringToArray(string data)
+
+        public void OutputArray(int[] array)
+            //Outputs an array to console in a formatted way.
+            //Folllows assessment brief rules with outputting different size arrays. (10 for >= 256 OR 50 < 256)
         {
+            string arrayPrintable = "{";
+            char seperator = ',';
+            int iterator = 10;
+            if (array.Length > 256) iterator = 50;
+
+            for (int i = 0; i < array.Length; i+=iterator)
+            {
+                arrayPrintable = arrayPrintable + array[i].ToString() + seperator;
+            }
+
+            arrayPrintable = arrayPrintable + "}";
+            Console.WriteLine("Displaying result array - iterator (" + iterator + ") with length of " + array.Length);
+            Console.WriteLine(arrayPrintable);
 
         }
     }
