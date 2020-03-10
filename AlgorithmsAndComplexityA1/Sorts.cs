@@ -96,6 +96,9 @@ namespace AlgorithmsAndComplexityA1
             MergeSortRecursive(data, temp, 0, data.Length - 1);
         }
 
+
+        // Investigate QS not sorting issue
+
         public void QuickSort(int[] data, int left, int right) //Not working - figure this out
         {
             int i, j;
