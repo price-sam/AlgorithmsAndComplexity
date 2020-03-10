@@ -56,16 +56,33 @@ namespace AlgorithmsAndComplexityA1
                 {
 
                     Console.Write("Select file: ");
-                    string fileSelection = Console.ReadLine(); 
+                    string fileSelection = Console.ReadLine();
+                    int fileSelection_i = 0;
+                    try
+                    {
+                        fileSelection_i = Convert.ToInt32(fileSelection);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Invalid Selection. Please enter a digit to match the file - e.g. 1");
+                        continue; //Reiterate
+                    }
                     
-                    
+                    if (fileSelection_i > NetworkDataPaths.Count || fileSelection_i <= 0)
+                    {
+                        Console.WriteLine("Invalid Selection. Selection out of range.");
+                        continue; //Reiterate
+                    }
+
+                    validFile = true;
+
 
                 } while (!validFile);
             }
            
             
-            Console.WriteLine(fileSelection);
-            Console.WriteLine(NetworkDataPaths[Convert.ToInt32(fileSelection)-1]);
+            //Console.WriteLine(fileSelection);
+            //Console.WriteLine(NetworkDataPaths[Convert.ToInt32(fileSelection)-1]);
 
             //Ask user what they'd like to do with that data
             Console.WriteLine("What would you like to do with the data in the selected file?\n[1] Sort\n[2] Search\n[3] Merge\n[0] Main Menu");
