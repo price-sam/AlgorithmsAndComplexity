@@ -91,9 +91,7 @@ namespace AlgorithmsAndComplexityA1
                 temp[i] = data[i];
                 stepCount++;
             }
-            stepCount++;
-            stepCount++;
-            stepCount++;
+            stepCount += 3;
             MergeSortRecursive(temp, data, low, middle - 1, stepCount);
             MergeSortRecursive(data, temp, middle, high, stepCount);
             merger(data, temp, low, middle, high);
@@ -108,9 +106,8 @@ namespace AlgorithmsAndComplexityA1
         }
 
 
-        // Investigate QS not sorting issue
 
-        public void QuickSort(int[] data, int left, int right) //Not working - figure this out
+        public void QuickSort(int[] data, int left, int right) 
         {
             int i, j;
             int pivot, temp;

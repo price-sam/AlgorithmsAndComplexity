@@ -160,7 +160,7 @@ namespace AlgorithmsAndComplexityA1
                                     //quick
                                     Console.WriteLine("Performing Quick Sort on selected data...");
                                     sortAlgorithms.QuickSort(fileData, 0, fileData.Length-1);
-                                    helperFuncs.OutputArray(fileData);
+                                    helperFuncs.OutputArray(fileData); 
                                     isDataInArraySorted = true;
                                     break;
 
