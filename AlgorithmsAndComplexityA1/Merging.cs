@@ -26,7 +26,7 @@ namespace AlgorithmsAndComplexityA1
                 newMergedArray[step] = item;
                 step++;
             }
-
+            Console.WriteLine(newMergedArray.Length);
             return newMergedArray;
         }
     }

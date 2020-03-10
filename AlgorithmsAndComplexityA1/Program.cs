@@ -39,6 +39,7 @@ namespace AlgorithmsAndComplexityA1
 
             //Main Loop
             bool mainActive = true;
+            bool mergedArrayEnabled = false;
 
             while (mainActive)
             {
@@ -59,7 +60,7 @@ namespace AlgorithmsAndComplexityA1
 
                 while (!validFile)
                 {
-
+                    
                     Console.Write("Select file: ");
                     string fileSelection = Console.ReadLine();
                     int fileSelection_i = 0;
@@ -86,29 +87,11 @@ namespace AlgorithmsAndComplexityA1
                     
                 }
                 Console.WriteLine("\nFile Selected - " + selectedFilePath.Split('/').Last());  //Display what file was selected.
-
+                mergedArrayEnabled = false;
                 string[] fileData_string = File.ReadAllLines(selectedFilePath);
                 int totalLines = fileData_string.Length;
-                int[] fileData = new int[totalLines];
-
-                int dataCount = 0;
-                // Add each value as an integer to an array of integers ( as readalllines returns String[])
-                foreach (string item in fileData_string)
-                {
-                    if (item == "") continue;
-                    try
-                    {
-                        fileData[dataCount] = Convert.ToInt32(item);
-                    }
-                    catch
-                    {
-                        Console.WriteLine("\nInvaid data found in file. Ignoring...\n");
-                        continue;
-                    }
-
-
-                    dataCount++;
-                }
+                int[] fileData = helperFuncs.stringToIntArray(fileData_string);
+                
 
                 bool isDataInArraySorted = false;
 
@@ -126,21 +109,29 @@ namespace AlgorithmsAndComplexityA1
                             Console.WriteLine("Which algorithm would you like to run?\n[1] Bubble Sort\n[2] Inserstion Sort\n[3] Merge Sort\n[4] Quick Sort\n[0] Back");
                             Console.Write("Enter Selection: ");
                             string sortSelection = Console.ReadLine();
-                            int stepCount;
+                            int stepCount = 0;
                             switch (sortSelection)
                             {
                                 case "1":
                                     //bubble sort
-                                    Console.WriteLine("Performing bubble sort on selected data...");
-                                    stepCount = sortAlgorithms.bubbleSort(fileData, fileData.Length);
-                                    helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes
+                                    Console.WriteLine("\nPerforming bubble sort on selected data...");
+                                    if (!mergedArrayEnabled)
+                                    {
+                                        stepCount = sortAlgorithms.bubbleSort(fileData, fileData.Length);
+                                        helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes
+                                    }
+                                    else
+                                    {
+                                        stepCount = sortAlgorithms.bubbleSort(mergedFileData, fileData.Length);
+                                        helperFuncs.OutputArray(mergedFileData); // Follows assignemnt brief rules with outputting different sizes
+                                    }
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
                                     break;
 
                                 case "2":
                                     //insertion sort
-                                    Console.WriteLine("Performing Insertion Sort on selected data...");
+                                    Console.WriteLine("\nPerforming Insertion Sort on selected data...");
                                     stepCount = sortAlgorithms.InsertionSort(fileData);
                                     helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes 
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
@@ -149,7 +140,7 @@ namespace AlgorithmsAndComplexityA1
 
                                 case "3":
                                     //merge
-                                    Console.WriteLine("Performing Merge Sort on selected data...");
+                                    Console.WriteLine("\nPerforming Merge Sort on selected data...");
                                     stepCount = sortAlgorithms.MergeSort(fileData);
                                     helperFuncs.OutputArray(fileData);
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
@@ -158,7 +149,7 @@ namespace AlgorithmsAndComplexityA1
 
                                 case "4":
                                     //quick
-                                    Console.WriteLine("Performing Quick Sort on selected data...");
+                                    Console.WriteLine("\nPerforming Quick Sort on selected data...");
                                     sortAlgorithms.QuickSort(fileData, 0, fileData.Length-1);
                                     helperFuncs.OutputArray(fileData); 
                                     isDataInArraySorted = true;
@@ -191,7 +182,7 @@ namespace AlgorithmsAndComplexityA1
                                         break;
                                     }
 
-                                    Console.WriteLine("Performing Linear Search to find " + linearTarget_str + " in selected data..");
+                                    Console.WriteLine("\nPerforming Linear Search to find " + linearTarget_str + " in selected data..");
                                     int linearResult = searchAlgorithms.LinearSearch(fileData, linearTarget);
                                     if (linearResult == -1)
                                     {
@@ -218,7 +209,7 @@ namespace AlgorithmsAndComplexityA1
                                         break;
                                     }
 
-                                    Console.WriteLine("Performing Binary Search to find " + binaryTarget_str + " in selected data..");
+                                    Console.WriteLine("\nPerforming Binary Search to find " + binaryTarget_str + " in selected data..");
                                     int binaryResult = searchAlgorithms.BinarySearch(fileData, binaryTarget);
                                     if (binaryResult == -1)
                                     {
@@ -234,7 +225,37 @@ namespace AlgorithmsAndComplexityA1
                             break;
 
                         case "3":
-                            Console.WriteLine("Merging is not yet supported.");
+                            Console.WriteLine("/nWhat network data file would you like to merge with your current selection?");
+                            int mergeCount = 0;
+                            string mergeFilePath = "";
+                            foreach (string path in NetworkDataPaths)
+                            {
+                                mergeCount++;
+                                string[] pathSplit = path.Split('/');
+                                Console.WriteLine("[" + mergeCount.ToString() + "] " + pathSplit[pathSplit.Length - 1]);
+                            }
+                            Console.WriteLine("[" + (mergeCount + 1).ToString() + "] Back");
+                            Console.Write("Enter Selection: ");
+                            string mergeSelection = Console.ReadLine();
+                            int mergeSelection_i = 0;
+                            try
+                            {
+                                mergeSelection_i = Convert.ToInt32(mergeSelection);
+                            }
+                            catch
+                            {
+                                Console.WriteLine("\nInvalid Selection. Please enter a digit to match the file - e.g. 1\n");
+                                break;
+                            }
+                            if (mergeSelection_i == mergeCount + 1) break;
+                            mergeFilePath = NetworkDataPaths[mergeSelection_i - 1];
+                            Console.WriteLine("\nMerging two selected files.");
+                            Console.WriteLine(fileData.Length);
+                            string[] mergeData_string = File.ReadAllLines(mergeFilePath);
+                            int[] newArray = mergeAlgorithms.mergeFiles(fileData, helperFuncs.stringToIntArray(mergeData_string));
+                            newArray.CopyTo(mergedFileData, 0);
+                            Console.WriteLine("\nMerging Complete. You can now sort and search this new merged array.");
+                            Console.WriteLine(fileData.Length);
                             break;
 
                         case "0":

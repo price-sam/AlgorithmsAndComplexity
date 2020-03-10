@@ -56,5 +56,30 @@ namespace AlgorithmsAndComplexityA1
             }
             return output;
         }
+
+        public int[] stringToIntArray(string[] array)
+        {
+            int[] newArray = new int[array.Length];
+            int dataCount = 0;
+            // Add each value as an integer to an array of integers ( as readalllines returns String[])
+            foreach (string item in array)
+            {
+                if (item == "") continue;
+                try
+                {
+                    newArray[dataCount] = Convert.ToInt32(item);
+                }
+                catch
+                {
+                    Console.WriteLine("\nInvaid data found in file. Ignoring...\n");
+                    continue;
+                }
+
+
+                dataCount++;
+            }
+
+            return newArray;
+        }
     }
 }

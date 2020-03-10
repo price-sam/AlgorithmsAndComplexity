@@ -13,7 +13,7 @@ namespace AlgorithmsAndComplexityA1
         //Potential to have a O(n) 
         {
             int count = 0;
-            int closestValue = 0;
+            int closestValue = array[0];
             int closestValuePosition = 0;
             foreach (int item in array)
             {
@@ -22,16 +22,18 @@ namespace AlgorithmsAndComplexityA1
                     Console.WriteLine("Completed in " + count.ToString() + " steps.");
                     return count;
                 }
-                count++;
                 if (Math.Abs(item-target) < Math.Abs(target-closestValue))
                 {
+
                     closestValue = item;
                     closestValuePosition = count;
                 }
+                count++;
+
             }
 
-            Console.WriteLine("Nearest Value to target: " + closestValue + " at position " + closestValuePosition);
             Console.WriteLine("Completed in " + count.ToString() + " steps.");
+            Console.WriteLine("Nearest Value to target: " + closestValue + " at position " + closestValuePosition);
             return -1;
         }
 
@@ -41,10 +43,14 @@ namespace AlgorithmsAndComplexityA1
             //Takes a target integer - Returns position of target if found - Returns -1 if not found
             //Iterative Approach
         {
+            
+
             int stepCount = 0;
             int left = 0;
             int right = array.Length - 1;
             int middle;
+            int closestValue = array[0];
+            int closestValuePosition = 0;
             while (left <= right)
             {
                 stepCount++;
@@ -53,6 +59,12 @@ namespace AlgorithmsAndComplexityA1
                 {
                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                     return middle; //Best case on first recursion 
+                }
+                if (Math.Abs(array[middle] - target) < Math.Abs(target - closestValue))
+                {
+
+                    closestValue = array[middle];
+                    closestValuePosition = middle;
                 }
 
                 if (target > array[middle]) 
@@ -71,6 +83,8 @@ namespace AlgorithmsAndComplexityA1
             }
 
             Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
+            Console.WriteLine("Nearest Value to target: " + closestValue + " at position " + closestValuePosition);
+
             return -1;
         }
     }
