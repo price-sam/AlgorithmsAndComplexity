@@ -114,7 +114,12 @@ namespace AlgorithmsAndComplexityA1
                                     //bubble sort
                                     Console.WriteLine("\nPerforming bubble sort on selected data...");
                                     stepCount = sortAlgorithms.bubbleSort(fileData, fileData.Length);
+                                    Console.WriteLine("Ascending Order:");
                                     helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes
+                                    Console.WriteLine("Descending Order");
+                                    helperFuncs.ReverseOrder(fileData);
+                                    helperFuncs.OutputArray(fileData);
+                                    helperFuncs.ReverseOrder(fileData);
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
                                     break;
@@ -123,7 +128,12 @@ namespace AlgorithmsAndComplexityA1
                                     //insertion sort
                                     Console.WriteLine("\nPerforming Insertion Sort on selected data...");
                                     stepCount = sortAlgorithms.InsertionSort(fileData);
+                                    Console.WriteLine("Ascending Order:");
                                     helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes 
+                                    Console.WriteLine("Descending Order");
+                                    helperFuncs.ReverseOrder(fileData);
+                                    helperFuncs.OutputArray(fileData);
+                                    helperFuncs.ReverseOrder(fileData);
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
                                     break;
@@ -132,7 +142,12 @@ namespace AlgorithmsAndComplexityA1
                                     //merge
                                     Console.WriteLine("\nPerforming Merge Sort on selected data...");
                                     stepCount = sortAlgorithms.MergeSort(fileData);
+                                    Console.WriteLine("Ascending Order:");
                                     helperFuncs.OutputArray(fileData);
+                                    Console.WriteLine("Descending Order");
+                                    helperFuncs.ReverseOrder(fileData);
+                                    helperFuncs.OutputArray(fileData);
+                                    helperFuncs.ReverseOrder(fileData);
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
                                     break;
@@ -141,7 +156,12 @@ namespace AlgorithmsAndComplexityA1
                                     //quick
                                     Console.WriteLine("\nPerforming Quick Sort on selected data...");
                                     stepCount = sortAlgorithms.QuickSort(fileData);
+                                    Console.WriteLine("Ascending Order:");
                                     helperFuncs.OutputArray(fileData);
+                                    Console.WriteLine("Descending Order");
+                                    helperFuncs.ReverseOrder(fileData);
+                                    helperFuncs.OutputArray(fileData);
+                                    helperFuncs.ReverseOrder(fileData);
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
                                     break;
