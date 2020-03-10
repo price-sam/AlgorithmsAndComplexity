@@ -115,16 +115,8 @@ namespace AlgorithmsAndComplexityA1
                                 case "1":
                                     //bubble sort
                                     Console.WriteLine("\nPerforming bubble sort on selected data...");
-                                    if (!mergedArrayEnabled)
-                                    {
-                                        stepCount = sortAlgorithms.bubbleSort(fileData, fileData.Length);
-                                        helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes
-                                    }
-                                    else
-                                    {
-                                        stepCount = sortAlgorithms.bubbleSort(mergedFileData, fileData.Length);
-                                        helperFuncs.OutputArray(mergedFileData); // Follows assignemnt brief rules with outputting different sizes
-                                    }
+                                    stepCount = sortAlgorithms.bubbleSort(fileData, fileData.Length);
+                                    helperFuncs.OutputArray(fileData); // Follows assignemnt brief rules with outputting different sizes
                                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                                     isDataInArraySorted = true;
                                     break;
@@ -252,8 +244,7 @@ namespace AlgorithmsAndComplexityA1
                             Console.WriteLine("\nMerging two selected files.");
                             Console.WriteLine(fileData.Length);
                             string[] mergeData_string = File.ReadAllLines(mergeFilePath);
-                            int[] newArray = mergeAlgorithms.mergeFiles(fileData, helperFuncs.stringToIntArray(mergeData_string));
-                            newArray.CopyTo(mergedFileData, 0);
+                            fileData = mergeAlgorithms.mergeFiles(fileData, helperFuncs.stringToIntArray(mergeData_string));
                             Console.WriteLine("\nMerging Complete. You can now sort and search this new merged array.");
                             Console.WriteLine(fileData.Length);
                             break;
