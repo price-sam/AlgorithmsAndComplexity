@@ -39,7 +39,6 @@ namespace AlgorithmsAndComplexityA1
 
             //Main Loop
             bool mainActive = true;
-            bool mergedArrayEnabled = false;
 
             while (mainActive)
             {
@@ -87,7 +86,6 @@ namespace AlgorithmsAndComplexityA1
                     
                 }
                 Console.WriteLine("\nFile Selected - " + selectedFilePath.Split('/').Last());  //Display what file was selected.
-                mergedArrayEnabled = false;
                 string[] fileData_string = File.ReadAllLines(selectedFilePath);
                 int totalLines = fileData_string.Length;
                 int[] fileData = helperFuncs.stringToIntArray(fileData_string);
