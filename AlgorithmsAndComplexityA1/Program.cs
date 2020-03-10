@@ -34,7 +34,7 @@ namespace AlgorithmsAndComplexityA1
             }
 
             //Main Loop
-            bool mainActive = true; 
+            bool mainActive = true;
 
             while (mainActive)
             {
@@ -47,6 +47,7 @@ namespace AlgorithmsAndComplexityA1
                     string[] pathSplit = path.Split('/');
                     Console.WriteLine("[" + count.ToString() + "] " + pathSplit[pathSplit.Length - 1]);
                 }
+                Console.WriteLine("[" + (count + 1).ToString() + "] Exit Program");
 
                 //Do WHILE - For player input
                 bool validFile = false;
@@ -67,7 +68,9 @@ namespace AlgorithmsAndComplexityA1
                         Console.WriteLine("Invalid Selection. Please enter a digit to match the file - e.g. 1");
                         continue; //Reiterate
                     }
-                    
+
+                    if (fileSelection_i == NetworkDataPaths.Count + 1) System.Environment.Exit(0); //Exit with a successful exit code (0)
+
                     if (fileSelection_i > NetworkDataPaths.Count || fileSelection_i <= 0)
                     {
                         Console.WriteLine("Invalid Selection. Selection out of range.");
@@ -77,7 +80,7 @@ namespace AlgorithmsAndComplexityA1
                     validFile = true;
 
 
-                } while (!validFile);
+                } while (validFile == false);
             }
            
             
