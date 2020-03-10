@@ -158,9 +158,10 @@ namespace AlgorithmsAndComplexityA1
 
                                 case "4":
                                     //quick
-                                    //Console.WriteLine("Performing Quick Sort on selected data...");
-                                    //sortAlgorithms.QuickSort(fileData); 
-                                    //isDataInArraySorted = true;
+                                    Console.WriteLine("Performing Quick Sort on selected data...");
+                                    sortAlgorithms.QuickSort(fileData, 0, fileData.Length-1);
+                                    helperFuncs.OutputArray(fileData);
+                                    isDataInArraySorted = true;
                                     break;
 
                                 case "0":
