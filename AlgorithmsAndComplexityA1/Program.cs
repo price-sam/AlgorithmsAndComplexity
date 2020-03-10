@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+// Sam Price (PRI19696086)
+// Algorithms and Complexity Assignment 1
+// Program Entry Point (Main)
+
 namespace AlgorithmsAndComplexityA1
 {
     class Program
@@ -92,7 +97,17 @@ namespace AlgorithmsAndComplexityA1
                 foreach (string item in fileData_string)
                 {
                     if (item == "") continue;
-                    fileData[dataCount] = Convert.ToInt32(item);
+                    try
+                    {
+                        fileData[dataCount] = Convert.ToInt32(item);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Invaid data found in file. Ignoring...");
+                        continue;
+                    }
+
+
                     dataCount++;
                 }
 
