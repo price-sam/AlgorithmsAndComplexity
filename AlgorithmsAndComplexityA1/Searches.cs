@@ -17,13 +17,13 @@ namespace AlgorithmsAndComplexityA1
             {
                 if (item == target)
                 {
-                    Console.WriteLine("Completed in " + count.ToString() + "steps.");
+                    Console.WriteLine("Completed in " + count.ToString() + " steps.");
                     return count;
                 }
                 count++;
             }
 
-            Console.WriteLine("Completed in " + count.ToString() + "steps.");
+            Console.WriteLine("Completed in " + count.ToString() + " steps.");
             return -1;
         }
 
@@ -43,7 +43,7 @@ namespace AlgorithmsAndComplexityA1
                 middle = (left + right) / 2;
                 if (target == array[middle])
                 {
-                    Console.WriteLine("Completed in " + stepCount.ToString() + "steps.");
+                    Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                     return middle; //Best case on first recursion 
                 }
 
@@ -62,7 +62,7 @@ namespace AlgorithmsAndComplexityA1
                 
             }
 
-            Console.WriteLine("Completed in " + stepCount.ToString() + "steps.");
+            Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
             return -1;
         }
     }

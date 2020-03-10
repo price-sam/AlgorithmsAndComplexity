@@ -191,7 +191,7 @@ namespace AlgorithmsAndComplexityA1
                                         break;
                                     }
 
-                                    Console.WriteLine("Performing Linear Search to find " + linearTarget_str + "in selected data..");
+                                    Console.WriteLine("Performing Linear Search to find " + linearTarget_str + " in selected data..");
                                     int linearResult = searchAlgorithms.LinearSearch(fileData, linearTarget);
                                     if (linearResult == -1)
                                     {
@@ -218,7 +218,7 @@ namespace AlgorithmsAndComplexityA1
                                         break;
                                     }
 
-                                    Console.WriteLine("Performing Binary Search to find " + binaryTarget_str + "in selected data..");
+                                    Console.WriteLine("Performing Binary Search to find " + binaryTarget_str + " in selected data..");
                                     int binaryResult = searchAlgorithms.BinarySearch(fileData, binaryTarget);
                                     if (binaryResult == -1)
                                     {
