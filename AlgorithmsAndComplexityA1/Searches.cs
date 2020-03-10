@@ -13,6 +13,8 @@ namespace AlgorithmsAndComplexityA1
         //Potential to have a O(n) 
         {
             int count = 0;
+            int closestValue = 0;
+            int closestValuePosition = 0;
             foreach (int item in array)
             {
                 if (item == target)
@@ -21,8 +23,14 @@ namespace AlgorithmsAndComplexityA1
                     return count;
                 }
                 count++;
+                if (Math.Abs(item-target) < Math.Abs(target-closestValue))
+                {
+                    closestValue = item;
+                    closestValuePosition = count;
+                }
             }
 
+            Console.WriteLine("Nearest Value to target: " + closestValue + " at position " + closestValuePosition);
             Console.WriteLine("Completed in " + count.ToString() + " steps.");
             return -1;
         }

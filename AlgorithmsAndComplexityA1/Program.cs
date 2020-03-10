@@ -24,7 +24,6 @@ namespace AlgorithmsAndComplexityA1
             Merging mergeAlgorithms = new Merging();
             HelperFunctions helperFuncs = new HelperFunctions();
 
-            int[] networkDataFromFile = {}; 
             List<String> NetworkDataPaths = new List<String>();
 
             //Initialisation
