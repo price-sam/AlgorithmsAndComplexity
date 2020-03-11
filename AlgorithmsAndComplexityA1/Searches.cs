@@ -6,37 +6,20 @@ namespace AlgorithmsAndComplexityA1
 {
     class Searches
     {
-
-
-
-
-
-        //REMINDER - ADD FUNCTIONALITY IF TARGET APPEARS MORE THAN ONCE TO PROVIDE ALL LOCATIONS (TASK 3) 
-
-
-
-
-
-
-
-
-
-
-
-        public int LinearSearch(int[] array, int target)
+        public List<int> LinearSearch(int[] array, int target)
         //Performs a linear search on the given array of integers
-        // Takes a target integer - Returns position if found - Returns -1 if not found
+        // Takes a target integer - Returns list of positions if found - returns empty list if not found and displays nearest value
         //Potential to have a O(n) 
         {
             int count = 0;
             int closestValue = array[0];
             int closestValuePosition = 0;
+            List<int> result = new List<int>();
             foreach (int item in array)
             {
                 if (item == target)
                 {
-                    Console.WriteLine("Completed in " + count.ToString() + " steps.");
-                    return count;
+                    result.Add(count);
                 }
                 if (Math.Abs(item-target) < Math.Abs(target-closestValue))
                 {
@@ -49,8 +32,11 @@ namespace AlgorithmsAndComplexityA1
             }
 
             Console.WriteLine("Completed in " + count.ToString() + " steps.");
-            Console.WriteLine("Nearest Value to target: " + closestValue + " at position " + closestValuePosition);
-            return -1;
+            if (result.Count == 0)
+            {
+                Console.WriteLine("Nearest Value to target: " + closestValue + " at position " + closestValuePosition);
+            }
+            return result;
         }
 
 
@@ -76,6 +62,7 @@ namespace AlgorithmsAndComplexityA1
                     Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
                     return middle; //Best case on first recursion 
                 }
+                //Calculate if currnet item is a better closest value than what is currently stored 
                 if (Math.Abs(array[middle] - target) < Math.Abs(target - closestValue))
                 {
 

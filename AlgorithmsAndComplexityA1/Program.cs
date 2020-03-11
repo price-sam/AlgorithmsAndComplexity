@@ -65,7 +65,7 @@ namespace AlgorithmsAndComplexityA1
                     int fileSelection_i = 0;
                     try
                     {
-                        fileSelection_i = Convert.ToInt32(fileSelection);
+                        fileSelection_i = Convert.ToInt32(fileSelection); //Try and convert selection to Int32 (So it can be used as an array pointer)
                     }
                     catch
                     {
@@ -82,18 +82,19 @@ namespace AlgorithmsAndComplexityA1
                     }
 
                     validFile = true;
-                    selectedFilePath = NetworkDataPaths[fileSelection_i-1];
+                    selectedFilePath = NetworkDataPaths[fileSelection_i-1]; // Set file path to selected file name
                     
                 }
-                Console.WriteLine("\nFile Selected - " + selectedFilePath.Split('/').Last());  //Display what file was selected.
-                string[] fileData_string = File.ReadAllLines(selectedFilePath);
+                Console.WriteLine("\nFile Selected - " + selectedFilePath.Split('/').Last());  //Display what file was selected. (Last two files of path)
+                //Import data from file
+                string[] fileData_string = File.ReadAllLines(selectedFilePath); 
                 int totalLines = fileData_string.Length;
                 int[] fileData = helperFuncs.stringToIntArray(fileData_string);
                 
 
-                bool isDataInArraySorted = false;
+                bool isDataInArraySorted = false; //False when data is unsorted
 
-                bool active = true;
+                bool active = true; //Loop condition
               
                 while (active)
                 {
@@ -101,13 +102,16 @@ namespace AlgorithmsAndComplexityA1
                     Console.WriteLine("What would you like to do with the data in the selected file?\n[1] Sort\n[2] Search\n[3] Merge\n[0] Main Menu");
                     Console.Write("Enter Selection: ");
                     string modeSelection = Console.ReadLine();
+                    //Switch to handle selection
                     switch (modeSelection)
                     {
-                        case "1":
+                        //Sorts
+                        case "1": 
                             Console.WriteLine("Which algorithm would you like to run?\n[1] Bubble Sort\n[2] Insertsion Sort\n[3] Merge Sort\n[4] Quick Sort\n[0] Back");
-                            Console.Write("Enter Selection: ");
-                            string sortSelection = Console.ReadLine();
+                            Console.Write("Enter Selection: "); 
+                            string sortSelection = Console.ReadLine(); //User Input
                             int stepCount = 0;
+                            //Switch to handle sort selection
                             switch (sortSelection)
                             {
                                 case "1":
@@ -194,14 +198,16 @@ namespace AlgorithmsAndComplexityA1
                                     }
 
                                     Console.WriteLine("\nPerforming Linear Search to find " + linearTarget_str + " in selected data..");
-                                    int linearResult = searchAlgorithms.LinearSearch(fileData, linearTarget);
-                                    if (linearResult == -1)
+                                    List<int> linearResult = searchAlgorithms.LinearSearch(fileData, linearTarget);
+                                    if (linearResult.Count == 0)
                                     {
                                         Console.WriteLine("Target not found in data.");
                                         break;
                                     }
 
-                                    Console.WriteLine(linearTarget_str + " found at position " + linearResult.ToString() + " in selected data.");
+                                    string positionsString = string.Join(",", linearResult);
+                                   
+                                    Console.WriteLine(linearTarget_str + " found on "+ linearResult.Count().ToString() +" occurences at positions " + positionsString + " in selected data.");
                                     break;
 
                                 case "2":
