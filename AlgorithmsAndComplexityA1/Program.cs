@@ -207,7 +207,7 @@ namespace AlgorithmsAndComplexityA1
 
                                     string positionsString = string.Join(",", linearResult);
                                    
-                                    Console.WriteLine(linearTarget_str + " found on "+ linearResult.Count().ToString() +" occurences at positions " + positionsString + " in selected data.");
+                                    Console.WriteLine(linearTarget_str + " found on "+ linearResult.Count().ToString() +" occurence(s) at position(s) " + positionsString + " in selected data.");
                                     break;
 
                                 case "2":
@@ -227,14 +227,16 @@ namespace AlgorithmsAndComplexityA1
                                     }
 
                                     Console.WriteLine("\nPerforming Binary Search to find " + binaryTarget_str + " in selected data..");
-                                    int binaryResult = searchAlgorithms.BinarySearch(fileData, binaryTarget);
-                                    if (binaryResult == -1)
+                                    List<int> binaryResult = searchAlgorithms.BinarySearch(fileData, binaryTarget);
+                                    if (binaryResult.Count() == 0)
                                     {
                                         Console.WriteLine("Target not found in data.");
                                         break;
                                     }
 
-                                    Console.WriteLine(binaryTarget_str + " found at position " + binaryResult.ToString() + " in selected data.");
+                                    string positionsString_bin = string.Join(",", binaryResult);
+
+                                    Console.WriteLine(binaryTarget_str + " found on " + binaryResult.Count().ToString() + " occurence(s) at position(s) " + positionsString_bin + " in selected data.");
 
                                     break;
                             }

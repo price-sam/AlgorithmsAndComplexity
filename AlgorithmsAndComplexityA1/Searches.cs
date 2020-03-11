@@ -19,6 +19,7 @@ namespace AlgorithmsAndComplexityA1
             {
                 if (item == target)
                 {
+                    Console.WriteLine("Found first matching value in " + count.ToString() + " steps.");
                     result.Add(count);
                 }
                 if (Math.Abs(item-target) < Math.Abs(target-closestValue))
@@ -40,12 +41,14 @@ namespace AlgorithmsAndComplexityA1
         }
 
 
-        public int BinarySearch(int[] array, int target)
+        public List<int> BinarySearch(int[] array, int target)
             //Performs a binary search on the given array of integers
             //Takes a target integer - Returns position of target if found - Returns -1 if not found
             //Iterative Approach
         {
-            
+
+            List<int> result = new List<int>();
+
 
             int stepCount = 0;
             int left = 0;
@@ -59,8 +62,9 @@ namespace AlgorithmsAndComplexityA1
                 middle = (left + right) / 2;
                 if (target == array[middle])
                 {
-                    Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
-                    return middle; //Best case on first recursion 
+                    Console.WriteLine("Found first matching value in " + stepCount.ToString() + " steps.");
+                    result.Add(middle);
+                    //return middle; //Best case on first recursion 
                 }
                 //Calculate if currnet item is a better closest value than what is currently stored 
                 if (Math.Abs(array[middle] - target) < Math.Abs(target - closestValue))
@@ -88,7 +92,7 @@ namespace AlgorithmsAndComplexityA1
             Console.WriteLine("Completed in " + stepCount.ToString() + " steps.");
             Console.WriteLine("Nearest Value to target: " + closestValue + " at position " + closestValuePosition);
 
-            return -1;
+            return result;
         }
     }
 }
