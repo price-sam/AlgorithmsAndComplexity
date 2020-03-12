@@ -106,7 +106,7 @@ namespace AlgorithmsAndComplexityA1
                     switch (modeSelection)
                     {
                         //Sorts
-                        case "1": 
+                        case "1":  
                             Console.WriteLine("Which algorithm would you like to run?\n[1] Bubble Sort\n[2] Insertsion Sort\n[3] Merge Sort\n[4] Quick Sort\n[0] Back");
                             Console.Write("Enter Selection: "); 
                             string sortSelection = Console.ReadLine(); //User Input
@@ -174,13 +174,13 @@ namespace AlgorithmsAndComplexityA1
                                     //back
                                     break;
 
-                                default:
+                                default: //Default - assume an invalid selection was made
                                     Console.WriteLine("\nInvalid Selection. Please specify a digit linked to the mode. E.g. 1\n");
                                     break;
                             }
                             break;
 
-                        case "2":
+                        case "2": //Searching
                             Console.WriteLine("Which algorithm would you like to run?\n[1] Linear Search\n[2] Binary Search\n[0] Back");
                             Console.Write("Enter Selection: ");
                             string searchSelection = Console.ReadLine();
@@ -243,7 +243,7 @@ namespace AlgorithmsAndComplexityA1
 
                             break;
 
-                        case "3":
+                        case "3": //Merging
                             Console.WriteLine("/nWhat network data file would you like to merge with your current selection?");
                             int mergeCount = 0;
                             string mergeFilePath = "";
@@ -257,7 +257,7 @@ namespace AlgorithmsAndComplexityA1
                             Console.Write("Enter Selection: ");
                             string mergeSelection = Console.ReadLine();
                             int mergeSelection_i = 0;
-                            try
+                            try //Error handling to catch invalid input
                             {
                                 mergeSelection_i = Convert.ToInt32(mergeSelection);
                             }
@@ -269,18 +269,16 @@ namespace AlgorithmsAndComplexityA1
                             if (mergeSelection_i == mergeCount + 1) break;
                             mergeFilePath = NetworkDataPaths[mergeSelection_i - 1];
                             Console.WriteLine("\nMerging two selected files.");
-                            Console.WriteLine(fileData.Length);
                             string[] mergeData_string = File.ReadAllLines(mergeFilePath);
                             fileData = mergeAlgorithms.mergeFiles(fileData, helperFuncs.stringToIntArray(mergeData_string));
                             Console.WriteLine("\nMerging Complete. You can now sort and search this new merged array.");
-                            Console.WriteLine(fileData.Length);
                             break;
 
-                        case "0":
+                        case "0": //Return to main menu - this will clear any stored array
                             active = false;
                             break;
 
-                        default:
+                        default: //Default - assume an invalid selection was made
                             Console.WriteLine("\nInvalid Selection. Please specify a digit linked to the mode. E.g. 1\n");
                             break;
 

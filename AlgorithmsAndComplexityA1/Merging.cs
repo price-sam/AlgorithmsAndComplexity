@@ -7,6 +7,8 @@ namespace AlgorithmsAndComplexityA1
     class Merging
     {
         public int[] mergeFiles(int[] arrayOne, int[] arrayTwo)
+            //Merges two arrays together - takes in two arrays of integers
+            //Returns new array
         {
             int totalLengthOfBoth = 0;
             totalLengthOfBoth += arrayOne.Length;
@@ -26,7 +28,6 @@ namespace AlgorithmsAndComplexityA1
                 newMergedArray[step] = item;
                 step++;
             }
-            Console.WriteLine(newMergedArray.Length);
             return newMergedArray;
         }
     }

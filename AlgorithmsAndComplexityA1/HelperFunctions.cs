@@ -45,6 +45,7 @@ namespace AlgorithmsAndComplexityA1
 
         public int ParseInt(string x)
         {
+            //Attempts to parse a string to int32 
             int output = 0;
             try
             {

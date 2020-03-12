@@ -7,6 +7,9 @@ namespace AlgorithmsAndComplexityA1
     class Sorts
     {
         public int bubbleSort(int[] array, int n)
+            // Bubble Sort
+            // Takes in an array and length integer
+            // Returns total steps taken
         {
             int stepCount = 0;
             for (int x = 0; x < n - 1; x++)
@@ -21,7 +24,6 @@ namespace AlgorithmsAndComplexityA1
                         array[y] = array[y + 1];
                         stepCount++;
                         array[y + 1] = tempSwap;
-                        stepCount++;
                     }
                 }
             }
@@ -30,6 +32,9 @@ namespace AlgorithmsAndComplexityA1
 
         public int InsertionSort(int[] data)
         {
+            // Insertsion Sort
+            // Takes in an array
+            // Returns total steps taken
             int stepCount = 0;
             int sortedTotal = 0;
             int index;
@@ -59,6 +64,8 @@ namespace AlgorithmsAndComplexityA1
 
         private void merger(int[] data, int[] temp, int low, int middle, int high)
         {
+            //Merger (PRIVATE)
+            //Merges two arrays for merge sort
             int ri = low;
             int ti = low;
             int di = middle;
@@ -81,6 +88,8 @@ namespace AlgorithmsAndComplexityA1
 
         private int MergeSortRecursive(int[] data, int[] temp, int low, int high, int stepCount)
         {
+            // Merge Sort Recursive (PRIVATE)
+            // Private function to start recursive loop for merge sort
             int n = high - low + 1;
             int middle = low + n / 2;
             int i;
@@ -100,6 +109,9 @@ namespace AlgorithmsAndComplexityA1
         }
 
         public int MergeSort(int[] data)
+        // Merge Sort
+        // Takes in an array 
+        // Returns total steps taken
         {
             int[] temp = new int[data.Length];
             return MergeSortRecursive(data, temp, 0, data.Length - 1, 0);
@@ -148,7 +160,11 @@ namespace AlgorithmsAndComplexityA1
             return stepCount;
         }
 
+
         public int QuickSort(int[] data)
+        // Quick Sort
+        // Takes in an array 
+        // Returns total steps taken
         {
             return theQuickSort(data, 0, data.Length - 1, 0);
         }
